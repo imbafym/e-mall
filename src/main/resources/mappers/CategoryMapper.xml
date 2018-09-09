@@ -76,7 +76,7 @@
         #{sortOrder,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
-        now(),
+        create_time = now(),
       </if>
       <if test="updateTime != null">
         now(),
@@ -117,4 +117,27 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!--mybatis 已经封装好map list 之类的对象 直接使用resultMap 和 默认BaseResultMap-->
+  <select id="selectChildrenCategoryByParentId"  parameterType="int" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from mmall_category
+    where parent_id =#{parent_id}
+  </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </mapper>

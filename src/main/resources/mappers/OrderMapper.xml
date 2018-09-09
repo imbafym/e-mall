@@ -130,10 +130,10 @@
         #{closeTime,jdbcType=TIMESTAMP},
       </if>
       <if test="createTime != null">
-        now(),
+        create_time =now(),
       </if>
       <if test="updateTime != null">
-        now(),
+        update_time = now(),
       </if>
     </trim>
   </insert>

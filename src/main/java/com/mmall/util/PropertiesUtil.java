@@ -17,6 +17,7 @@ public class PropertiesUtil {
 
     private static Properties props;
 
+    //指执行一次 当类被加载的时候
     static {
         String fileName = "mmall.properties";
         props = new Properties();

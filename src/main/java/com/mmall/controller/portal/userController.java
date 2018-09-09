@@ -92,12 +92,12 @@ public class userController {
      */
     @RequestMapping(value = "reset_password.do", method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse<String> restPassword(HttpSession session, String password, String passwordNew){
+    public ServerResponse<String> restPassword(HttpSession session, String passwordOld, String passwordNew){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user==null){
             return ServerResponse.createByErrorMessage("User not login");
         }
-        return iUserService.restPassword(password,passwordNew, user);
+        return iUserService.restPassword(passwordOld,passwordNew, user);
     }
 
     @RequestMapping(value = "update_information.do", method = RequestMethod.POST)
@@ -128,4 +128,8 @@ public class userController {
         }
         return iUserService.getInformation(currentUser.getId());
     }
+
+
+
+
 }
