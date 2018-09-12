@@ -57,14 +57,14 @@ public class ProductMangeController {
 
     @RequestMapping("set_save_status.do")
     @ResponseBody
-    public ServerResponse setSaveStatus(HttpSession session, Integer prodcutId, Integer productStatus) {
+    public ServerResponse setSaveStatus(HttpSession session, Integer productId, Integer productStatus) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), "User not login, plean login as admin");
         }
         if (iUserService.checkAdminRole(user).isSuccess()) {
             //业务逻辑
-            return  iProductService.setSalesStatus(prodcutId,productStatus);
+            return  iProductService.setSalesStatus(productId,productStatus);
         } else {
             return ServerResponse.createByErrorMessage("No admin privillage");
         }
@@ -73,14 +73,14 @@ public class ProductMangeController {
 
     @RequestMapping("detail.do")
     @ResponseBody
-    public ServerResponse getDetail(HttpSession session, Integer prodcutId) {
+    public ServerResponse getDetail(HttpSession session, Integer productId) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), "User not login, plean login as admin");
         }
         if (iUserService.checkAdminRole(user).isSuccess()) {
             //业务逻辑
-            return  iProductService.manageProductDetail(prodcutId);
+            return  iProductService.manageProductDetail(productId);
         } else {
             return ServerResponse.createByErrorMessage("No admin privillage");
         }
