@@ -108,7 +108,7 @@ public class userController {
             return ServerResponse.createByErrorMessage("User not login");
         }
         user.setId(currentUser.getId());
-        //todo self added
+        //self added
         user.setUsername(currentUser.getUsername());
 
         ServerResponse<User> response = iUserService.updateInformation(user);
